@@ -1,0 +1,6 @@
+net\proselyte\bookmanager\service\BookService.class
+net\proselyte\bookmanager\controller\BookController.class
+net\proselyte\bookmanager\dao\BookDaoImpl.class
+net\proselyte\bookmanager\dao\BookDao.class
+net\proselyte\bookmanager\service\BookServiceImpl.class
+net\proselyte\bookmanager\model\Book.class

@@ -17,15 +17,18 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+
+
         <property name="url"
                   value="jdbc:mysql://localhost:3306/BOOKMANAGER"/>
+
         <property name="username" value="root"/>
         <property name="password" value="1111"/>
     </bean>
 
     <!-- Hibernate 4 SessionFactory Bean definition -->
-    <bean id="hibernate4AnnotatedSessionFactory"
-          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <bean id="hibernate5AnnotatedSessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
@@ -43,7 +46,7 @@
 
     <!--BookDao and BookService beans-->
     <bean id="bookDao" class="net.proselyte.bookmanager.dao.BookDaoImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+        <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
 
     <bean id="bookService" class="net.proselyte.bookmanager.service.BookServiceImpl">
@@ -54,8 +57,8 @@
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
 
     <mvc:default-servlet-handler/>
